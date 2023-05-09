@@ -487,6 +487,7 @@ public class DispatcherServlet extends FrameworkServlet {
 	@Override
 	protected void onRefresh(ApplicationContext context) {
 		initStrategies(context);
+		initStrategies(context);
 	}
 
 	/**初始化策略,加了s都是多个
@@ -1032,6 +1033,7 @@ public class DispatcherServlet extends FrameworkServlet {
 			Exception dispatchException = null;
 
 			try {
+				//校验是不是文件上传
 				processedRequest = checkMultipart(request);
 				multipartRequestParsed = (processedRequest != request);
 
@@ -1106,7 +1108,7 @@ public class DispatcherServlet extends FrameworkServlet {
 	}
 
 	/**
-	 * 如果没有视图，给你设置默认视图
+	 * 如果没有视图，给你设置默认视图.
 	 */
 	private void applyDefaultViewName(HttpServletRequest request, @Nullable ModelAndView mv) throws Exception {
 		if (mv != null && !mv.hasView()) {
